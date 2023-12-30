@@ -24,7 +24,6 @@ jobs:
       - name: Build
         run: npm run build
 
-
       - name: Configure Git
         run: |
           git config --global user.name "${{ github.actor }}"
@@ -43,11 +42,13 @@ jobs:
           # Fetch all branches
           git fetch --all
 
+          # Clean and reset
+          git clean -fdx
+          git reset --hard
+
           # Check if the gh-pages branch exists in the remote
           if git ls-remote --heads origin gh-pages | grep gh-pages; then
             # Checkout the existing gh-pages branch
-            git clean -fdx
-            git reset --hard
             git checkout gh-pages
           else
             # Create a new gh-pages branch
