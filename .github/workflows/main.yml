@@ -32,7 +32,7 @@ jobs:
       
       - name: Add remote repository
         run: |
-          git remote add origin https://x-access-token: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@github.com/hyz400021/doc.git
+          git remote add origin https://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@github.com/hyz400021/doc.git
 
 
       - name: Fetch branches
