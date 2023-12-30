@@ -63,22 +63,16 @@ jobs:
 
       - name: Build and Deploy
         run: |
-          #mkdir AAA
-          cp -r docs/.vuepress/dist/* .
-          #cd AAA
+          #cp -r docs/.vuepress/dist/* .
           #git add -A
           #git commit -m "Actions自动部署" || echo "No changes to commit"
           #git push origin gh-pages
-          #cd ..
-          #rm -rf AAA
+          #echo "Deploy done"
 
-
-
-          # cd docs/.vuepress/dist
-          #git init
-          git add -A
-          git commit -m "Actions自动部署" || echo "No changes to commit"
-          git push origin gh-pages
-          
-          #git push -f https://${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}.git gh-pages
-          echo "Deploy done"
+          git reset --hard
+          git clean -fdx
+          rm -rf * # 删除除 .git 之外的所有文件和目录
+          cp -r ../docs/.vuepress/dist/* .
+          git add .
+          git commit -m "Deploy to gh-pages"
+          git push origin gh-pages --force
