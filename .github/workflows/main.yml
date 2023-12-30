@@ -73,6 +73,7 @@ jobs:
           #git remote rm origin
           git remote add origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
           #   git remote set-url origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
+          git remote set-url origin https://x-access-token:${{ secrets.HYZ }}@github.com/hyz400021/doc.git
           git fetch origin
           #git clean -fdx
           #git checkout gh-pages
