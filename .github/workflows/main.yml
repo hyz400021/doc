@@ -38,9 +38,12 @@ jobs:
             git checkout -b gh-pages
           fi
           
+          git pull origin gh-pages
+
           cp -r docs/.vuepress/dist/* .
           git add .
           git commit -m "Actions自动部署"
+
           git push gh-pages
         
         
