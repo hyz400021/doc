@@ -51,20 +51,21 @@ jobs:
             # Checkout the existing gh-pages branch
             git push origin --delete gh-pages  
             #git checkout gh-pages
-            git checkout --orphan gh-pages
+            #git checkout --orphan gh-pages
             #git commit --allow-empty -m "Initial gh-pages commit"
             #git push origin gh-pages
           else
             # Create a new gh-pages branch
-            git checkout --orphan gh-pages
+            #git checkout --orphan gh-pages
             #git commit --allow-empty -m "Initial gh-pages commit"
             #git push origin gh-pages
           fi
 
       - name: Build and Deploy
         run: |
-          cp -r docs/.vuepress/dist/* .
-          git add .
+          #cp -r docs/.vuepress/dist/* .
+          cd docs/.vuepress/dist
+          git add -A
           git commit -m "Actions自动部署ok999" || echo "No changes to commit"
           git push origin gh-pages
           rm -rf docs/.vuepress/dist
