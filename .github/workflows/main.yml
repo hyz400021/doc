@@ -30,11 +30,10 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
       
-      - name: Add remote repository
+      - name: Update remote repository URL
         run: |
-          git remote add origin https://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@github.com/hyz400021/doc.git
-
-
+          git remote set-url origin https://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@github.com/hyz400021/doc.git
+        
       - name: Fetch branches
         run: |
           git fetch origin
