@@ -24,49 +24,37 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to GitHub Pages
+
+      - name: Configure Git
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git remote add gh-pages https://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@github.com/hyz400021/doc.git
-         
-          # Check out the gh-pages branch
-          git checkout gh-pages || git checkout -b gh-pages
       
-          # Pull the latest changes from the remote gh-pages branch
-          git pull origin gh-pages
+      - name: Add remote repository
+        run: |
+          git remote add origin https://x-access-token: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@github.com/hyz400021/doc.git
+
+
+      - name: Fetch branches
+        run: |
+          git fetch origin
       
-          # Copy the files to the root directory
+      - name: Checkout gh-pages branch
+        run: |
+          # Check if the gh-pages branch already exists locally
+          if git show-ref --quiet refs/heads/gh-pages; then
+            git checkout gh-pages
+          else
+            git checkout -b gh-pages origin/gh-pages
+          fi
+      
+      - name: Build and Deploy
+        run: |
           cp -r docs/.vuepress/dist/* .
-      
-          # Add, commit, and push changes
           git add .
-          git commit -m "Actions auto-deploy"
+          git commit -m "Actions自动部署" || echo "No changes to commit"
           git push origin gh-pages
-
-
-
-
-
-          # git config --global user.name "${{ github.actor }}"
-          # git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          # git remote add gh-pages https://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@github.com/hyz400021/doc.git
-          # git fetch gh-pages
-          
-          # # Check if the gh-pages branch already exists locally
-          # if git show-ref --quiet refs/heads/gh-pages; then
-          #   git checkout gh-pages
-          # else
-          #   git checkout -b gh-pages
-          # fi
-          
-          # git pull origin gh-pages
-
-          # cp -r docs/.vuepress/dist/* .
-          # git add .
-          # git commit -m "Actions自动部署"
-
-          # git push gh-pages
+      
         
         
         env:
