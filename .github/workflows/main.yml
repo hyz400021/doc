@@ -61,5 +61,5 @@ jobs:
         run: |
           cp -r docs/.vuepress/dist/* .
           git add .
-          git commit -m "Actions自动部署OK" || echo "No changes to commit"
+          git commit -m "Actions自动部署" || echo "No changes to commit"
           git push origin gh-pages
