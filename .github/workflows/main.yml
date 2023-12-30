@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: |    
+        run: |
           rm -rf docs/.vuepress/dist
           npm run build
 
@@ -49,21 +49,21 @@ jobs:
           # Check if the gh-pages branch exists in the remote
           if git ls-remote --heads origin gh-pages | grep gh-pages; then
             # Checkout the existing gh-pages branch
-            git push origin --delete gh-pages  
             #git checkout gh-pages
-            #git checkout --orphan gh-pages
-            #git commit --allow-empty -m "Initial gh-pages commit"
-            #git push origin gh-pages
+            git push origin --delete gh-pages
+            git checkout --orphan gh-pages
+            git commit --allow-empty -m "Initial gh-pages commit"
+            git push origin gh-pages
           else
             # Create a new gh-pages branch
-            #git checkout --orphan gh-pages
+            git checkout --orphan gh-pages
             git commit --allow-empty -m "Initial gh-pages commit"
-            #git push origin gh-pages
+            git push origin gh-pages
           fi
 
       - name: Build and Deploy
         run: |
           cp -r docs/.vuepress/dist/* .
-          git add -A
-          git commit -m "Actions自动部署ok999" || echo "No changes to commit"
+          git add .
+          git commit -m "Actions自动部署" || echo "No changes to commit"
           git push origin gh-pages
