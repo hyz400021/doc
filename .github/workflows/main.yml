@@ -38,11 +38,6 @@ jobs:
         run: |
           git fetch origin
 
-      - name: Clean and reset
-        run: |
-          git clean -fdx
-          git reset --hard
-
       - name: Checkout gh-pages branch
         run: |
           # Fetch all branches
@@ -51,6 +46,8 @@ jobs:
           # Check if the gh-pages branch exists in the remote
           if git ls-remote --heads origin gh-pages | grep gh-pages; then
             # Checkout the existing gh-pages branch
+            git clean -fdx
+            git reset --hard
             git checkout gh-pages
           else
             # Create a new gh-pages branch
