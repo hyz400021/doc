@@ -40,11 +40,19 @@ jobs:
       
       - name: Checkout gh-pages branch
         run: |
-          # Check if the gh-pages branch already exists locally
-          if git show-ref --quiet refs/heads/gh-pages; then
+          # Fetch all branches
+          git fetch --all
+
+          # Check if the gh-pages branch exists in the remote
+          if git ls-remote --heads origin gh-pages | grep gh-pages; then
+            # Checkout the existing gh-pages branch
             git checkout gh-pages
           else
-            git checkout -b gh-pages origin/gh-pages
+            # Create a new gh-pages branch
+            git checkout --orphan gh-pages
+            git reset --hard
+            git commit --allow-empty -m "Initial gh-pages commit"
+            git push origin gh-pages
           fi
       
       - name: Build and Deploy
