@@ -23,12 +23,12 @@ fi
 
 # git push -f https://${GITHUB_TOKEN}@github.com/hyz400021/doc.git HEAD:$push_branch
 
-git remote origin https://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@github.com/hyz400021/doc.git
+git remote set-url origin https://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@github.com/hyz400021/doc.git
 
 git init
 git add -A
 git commit -m "${msg}"
-git push -f origin gh-pages
+git push -f https://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@github.com/hyz400021/doc.git origin:gh-pages
 # git push -f $githubUrl origin:gh-pages # 推送到github
 
 cd -
