@@ -63,6 +63,7 @@ jobs:
 
       - name: Build and Deploy
         run: |
+          mkdir AAA
           cp -r docs/.vuepress/dist/* ./AAA
           cd AAA
           git init
