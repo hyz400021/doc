@@ -28,7 +28,7 @@ jobs:
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git remote add gh-pages https://${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git remote add gh-pages https://${HYZ}@github.com/${{ github.repository }}.git
           git fetch gh-pages
           
           # Check if the gh-pages branch already exists locally
@@ -45,4 +45,4 @@ jobs:
         
         
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_ACTOR }}
+          HYZ: ${{ secrets.GITHUB_ACTOR }}
