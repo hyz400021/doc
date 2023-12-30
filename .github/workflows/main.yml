@@ -63,12 +63,7 @@ jobs:
 
       - name: Build and Deploy
         run: |
-          mkdir AAA
-          cp -r docs/.vuepress/dist/* ./AAA
-          cd AAA
-          git init
+          cp -r docs/.vuepress/dist/* .
           git add -A
           git commit -m "Actions自动部署ok999" || echo "No changes to commit"
           git push origin gh-pages
-          cd ..
-          rm -rf AAA
