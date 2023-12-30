@@ -28,7 +28,8 @@ jobs:
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-      
+          git remote add gh-pages https://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@github.com/hyz400021/doc.git
+         
           # Check out the gh-pages branch
           git checkout gh-pages || git checkout -b gh-pages
       
@@ -46,7 +47,7 @@ jobs:
 
 
 
-          
+
           # git config --global user.name "${{ github.actor }}"
           # git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           # git remote add gh-pages https://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@github.com/hyz400021/doc.git
