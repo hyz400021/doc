@@ -22,7 +22,9 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: |
+          rm -rf docs/.vuepress/dist
+          npm run build
 
 #       - name: Clean and Reset
 #         run: |
@@ -61,4 +63,3 @@ jobs:
           git add .
           git commit -m "Actions自动部署OK" || echo "No changes to commit"
           git push origin gh-pages
-          rm -rf docs/.vuepress/dist
