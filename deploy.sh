@@ -14,11 +14,11 @@ push_branch=gh-pages
 
 if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
-  githubUrl=https://${GITHUB_TOKEN}@github.com/hyz400021/doc.git
+  githubUrl=https://hyz400021:${GITHUB_TOKEN}@github.com/hyz400021/doc.git
 #   githubUrl=git@github.com:hyz400021/doc.git
 else
   msg='来自github action的自动部署'
-  githubUrl=https://${GITHUB_TOKEN}@github.com/hyz400021/doc.git
+  githubUrl=https://hyz400021:${GITHUB_TOKEN}@github.com/hyz400021/doc.git
 fi
 
 # git push -f https://${GITHUB_TOKEN}@github.com/hyz400021/doc.git HEAD:$push_branch
@@ -31,3 +31,4 @@ git push -f $githubUrl HEAD:$push_branch # 推送到github
 
 cd -
 rm -rf docs/.vuepress/dist
+
