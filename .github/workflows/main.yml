@@ -74,6 +74,7 @@ jobs:
           #git remote rm origin
           git remote set-url origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
           git fetch origin
+          git checkout --orphan gh-pages
           git push origin gh-pages
           cd ..
           rm -rf AAA
