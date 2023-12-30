@@ -71,9 +71,14 @@ jobs:
           #git push origin gh-pages
           #cd ..
           #rm -rf AAA
+
+
+          
           cd docs/.vuepress/dist
           git init
           git add -A
           git commit -m "Actions自动部署" || echo "No changes to commit"
-          git push -f https://${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}.git gh-pages
+          git push origin gh-pages
+          
+          #git push -f https://${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}.git gh-pages
           echo "Deploy done"
