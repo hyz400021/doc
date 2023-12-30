@@ -57,7 +57,7 @@ jobs:
           else
             # Create a new gh-pages branch
             #git checkout --orphan gh-pages
-            #git commit --allow-empty -m "Initial gh-pages commit"
+            git commit --allow-empty -m "Initial gh-pages commit"
             #git push origin gh-pages
           fi
 
