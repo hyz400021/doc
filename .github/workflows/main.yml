@@ -72,7 +72,7 @@ jobs:
           git reset --hard
           git clean -fdx
           rm -rf * # 删除除 .git 之外的所有文件和目录
-          cp -r ../docs/.vuepress/dist/* .
+          cp -r docs/.vuepress/dist/* .
           git add .
-          git commit -m "Deploy to gh-pages"
+          git commit -m "Actions自动部署v" || echo "No changes to commit"
           git push origin gh-pages --force
