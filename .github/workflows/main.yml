@@ -24,9 +24,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Clean build files
+      - name: Clean and Reset
         run: |
-          rm -rf docs/.vuepress/dist
+          git reset --hard
+          git clean -fdx
 
       - name: Configure Git
         run: |
@@ -43,13 +44,6 @@ jobs:
 
       - name: Checkout gh-pages branch
         run: |
-          # Fetch all branches
-          git fetch --all
-
-          # Clean and reset
-          git clean -fdx
-          git reset --hard
-
           # Check if the gh-pages branch exists in the remote
           if git ls-remote --heads origin gh-pages | grep gh-pages; then
             # Checkout the existing gh-pages branch
@@ -57,7 +51,6 @@ jobs:
           else
             # Create a new gh-pages branch
             git checkout --orphan gh-pages
-            git reset --hard
             git commit --allow-empty -m "Initial gh-pages commit"
             git push origin gh-pages
           fi
