@@ -63,9 +63,8 @@ jobs:
 
       - name: Build and Deploy
         run: |
-          #cp -r docs/.vuepress/dist/* .
           cd docs/.vuepress/dist
           git add -A
-          git commit -m "Actions自动部署ok999" || echo "No changes to commit"
+          git commit -m "Actions自动部署ok9999" || echo "No changes to commit"
           git push origin gh-pages
-          rm -rf docs/.vuepress/dist
+          #rm -rf /path/to/temporary/directory
