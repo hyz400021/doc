@@ -24,10 +24,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Clean and reset
-        run: |
-          git clean -fdx
-          git reset --hard
 
       - name: Configure Git
         run: |
@@ -41,6 +37,11 @@ jobs:
       - name: Fetch branches
         run: |
           git fetch origin
+
+      - name: Clean and reset
+        run: |
+          git clean -fdx
+          git reset --hard
 
       - name: Checkout gh-pages branch
         run: |
