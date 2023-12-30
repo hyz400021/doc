@@ -34,6 +34,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
           { text: "Markdown相关", link: '/pages/f49640/' },
           { text: "生态产品价值实现", link: '/pages/55724e/' },
           { text: "个人日记", link: '/pages/2966bf/' },
+          { text: "github相关", link: '/pages/48e1ca/' },
         ]
       }
       // { text: '文档', link: '/pages/f49640/' },
