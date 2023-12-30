@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 修改为你的主分支名称
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git remote add gh-pages https://github.com/${{ github.repository }}.git
+          git fetch gh-pages
+          
+          # Check if the gh-pages branch already exists locally
+          if git show-ref --quiet refs/heads/gh-pages; then
+            git checkout gh-pages
+          else
+            git checkout -b gh-pages
+          fi
+          
+          cp -r docs/.vuepress/dist/* .
+          git add .
+          git commit -m "Actions自动部署"
+          git push gh-pages
+        
+        
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_ACTOR }}
