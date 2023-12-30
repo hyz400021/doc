@@ -1,24 +1,24 @@
 #!/usr/bin/env sh
-
 # 确保脚本抛出遇到的错误
 set -e
+npm run build # 生成静态文件
+cd docs/.vuepress/dist # 进入生成的文件夹
 
+# deploy to github
 
-push_addr=`git remote get-url --push origin` # git提交地址，也可以手动设置，比如：push_addr=git@github.com:xugaoyi/vuepress-theme-vdoing.git
-commit_info=`git describe --all --always --long`
-dist_path=docs/.vuepress/dist # 打包生成的文件夹路径
-push_branch=gh-pages # 推送的分支
-
-# 生成静态文件
-npm run build
-
-# 进入生成的文件夹
-cd $dist_path
-
+if [ -z "$GITHUB_TOKEN" ]; then
+  msg='deploy'
+  githubUrl=git@github.com:hyz400021/doc.git
+else
+  msg='来自github action的自动部署'
+  githubUrl=https://hyz400021:${GITHUB_TOKEN}@github.com/hyz400021/doc.git
+  git config --global user.name "hyz400021"
+  git config --global user.email "xox@qq.com"
+fi
 git init
 git add -A
-git commit -m "deploy, $commit_info"
-git push -f $push_addr HEAD:$push_branch
+git commit -m "${msg}"
+git push -f $githubUrl origin:gh-pages # 推送到github
 
 cd -
-rm -rf $dist_path
+rm -rf docs/.vuepress/dist
