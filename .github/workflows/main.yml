@@ -23,6 +23,7 @@ jobs:
 
       - name: Build
         run: |
+          git push origin --delete gh-pages      
           rm -rf docs/.vuepress/dist
           npm run build
 
@@ -63,3 +64,4 @@ jobs:
           git add .
           git commit -m "Actions自动部署" || echo "No changes to commit"
           git push origin gh-pages
+          rm -rf docs/.vuepress/dist
