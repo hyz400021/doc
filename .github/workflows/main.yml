@@ -71,7 +71,7 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git commit -m "Actions自动部署" || echo "No changes to commit"
-          git push --force --quiet "https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git" master:gh-pages
+          git push --force --quiet "https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git" origin:gh-pages
           cd ..
           rm -rf AAA
           rm -rf docs/.vuepress/dist
