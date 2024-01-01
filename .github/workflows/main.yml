@@ -40,9 +40,9 @@ jobs:
         run: |
           git remote set-url origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
 
-#       - name: Fetch branches
-#         run: |
-#           git fetch origin
+      - name: Fetch branches
+        run: |
+          git fetch origin
 
 #       - name: Checkout gh-pages branch
 #         run: |
@@ -68,7 +68,7 @@ jobs:
           git add -A
           git commit -a -m "自动化部署"
           #git push -f $githubUrl master:gh-pages # 推送到github
-          git push -f https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git master:gh-pages
+          git push -f https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git origin:gh-pages
 
           #mkdir AAA
           #   cp -r docs/.vuepress/dist/* ./AAA
