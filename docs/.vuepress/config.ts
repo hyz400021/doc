@@ -27,6 +27,11 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 
   // 主题配置
   themeConfig: {
+    //编辑配置
+    repo: 'hyz400021/doc', // Github仓库地址
+    docsDir: 'docs', // .md文件放在了docs目录下
+    editLinks: true, // 启用编辑链接
+    editLinkText: '编辑',
     // 导航配置
     nav: [
       {
