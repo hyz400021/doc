@@ -71,7 +71,8 @@ jobs:
           #git push -f $githubUrl master:gh-pages # 推送到github
           git checkout -b gh-pages
           #git push -f https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git gh-pages:gh-pages
-          git push -f https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git origin:gh-pages
+          #git push -f https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git origin:gh-pages
+          git push origin gh-pages
 
           #mkdir AAA
           #   cp -r docs/.vuepress/dist/* ./AAA
