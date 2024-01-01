@@ -67,7 +67,7 @@ jobs:
           git init
           git add -A
           git commit -a -m "自动化部署"
-          git remote add origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
+          git remote add origin https://github.com/hyz400021/doc.git
           #git push -f $githubUrl master:gh-pages # 推送到github
           git push origin gh-pages
           #git push -f https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git origin:gh-pages
