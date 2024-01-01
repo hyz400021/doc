@@ -68,12 +68,12 @@ jobs:
           git add -A
           git commit -a -m "自动化部署"
           git remote add origin https://github.com/hyz400021/doc.git
-          #git push -f $githubUrl master:gh-pages # 推送到github
-
-          git remote set-url origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
           git checkout -b gh-pages
-          #git push -f https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git gh-pages:gh-pages
-          #git push -f https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git origin:gh-pages
+          #git push -f $githubUrl master:gh-pages # 推送到github
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git remote set-url origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
+          
           git push origin gh-pages
 
           #mkdir AAA
