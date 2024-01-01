@@ -63,7 +63,17 @@ jobs:
 
       - name: Build and Deploy
         run: |
-          cp -r docs/.vuepress/dist/* .
-          git add .
+          mkdir AAA
+          cp -r docs/.vuepress/dist/* /AAA
+          cd AAA
+          git init
+          git add -A
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
           git commit -m "Actions自动部署" || echo "No changes to commit"
-          git push origin gh-pages
+          git push --force --quiet "https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git" master:gh-pages
+          cd ..
+          rm -rf AAA
+          rm -rf docs/.vuepress/dist
+
+        #   git push origin gh-pages
