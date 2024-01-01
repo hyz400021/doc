@@ -77,11 +77,11 @@ jobs:
           #git checkout -b gh-pages origin/gh-pages
           # 如果远程没有这个分支
           git checkout --orphan gh-pages
+          git remote set-url origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
           git reset --hard
           git commit --allow-empty -m "Initial gh-pages commit"
-          #git push origin gh-pages
+          git push origin gh-pages
           
-          git push --force --quiet "https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git" origin:gh-pages
           cd ..
           rm -rf AAA
           rm -rf docs/.vuepress/dist
