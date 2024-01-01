@@ -70,3 +70,5 @@ jobs:
           git add .
           git commit -a -m "Actions自动部署" || echo "No changes to commit"
           git push origin gh-pages
+          cd ..
+          rm -rf AAA
