@@ -31,48 +31,55 @@ jobs:
 #           git reset --hard
 #           git clean -fdx
 
-      - name: Configure Git
-        run: |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+#       - name: Configure Git
+#         run: |
+#           git config --global user.name "${{ github.actor }}"
+#           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-      - name: Update remote repository URL
-        run: |
-          git remote set-url origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
+#       - name: Update remote repository URL
+#         run: |
+#           git remote set-url origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
 
-      - name: Fetch branches
-        run: |
-          git fetch origin
+#       - name: Fetch branches
+#         run: |
+#           git fetch origin
 
-      - name: Checkout gh-pages branch
-        run: |
-          # Check if the gh-pages branch exists in the remote
-          if git ls-remote --heads origin gh-pages | grep gh-pages; then
-            # Checkout the existing gh-pages branch
-            #git checkout gh-pages
-            git push origin --delete gh-pages
-            git checkout --orphan gh-pages
-            git commit --allow-empty -m "Initial gh-pages commit"
-            #git push origin gh-pages
-          else
-            # Create a new gh-pages branch
-            git checkout --orphan gh-pages
-            git commit --allow-empty -m "Initial gh-pages commit"
-            #git push origin gh-pages
-          fi
+#       - name: Checkout gh-pages branch
+#         run: |
+#           # Check if the gh-pages branch exists in the remote
+#           if git ls-remote --heads origin gh-pages | grep gh-pages; then
+#             # Checkout the existing gh-pages branch
+#             #git checkout gh-pages
+#             git push origin --delete gh-pages
+#             git checkout --orphan gh-pages
+#             git commit --allow-empty -m "Initial gh-pages commit"
+#             #git push origin gh-pages
+#           else
+#             # Create a new gh-pages branch
+#             git checkout --orphan gh-pages
+#             git commit --allow-empty -m "Initial gh-pages commit"
+#             #git push origin gh-pages
+#           fi
 
       - name: Build and Deploy
         run: |
-          mkdir AAA
-          cp -r docs/.vuepress/dist/* ./AAA
-          cd AAA
-          git init
-          git add -A
+          cd docs/.vuepress/dist
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git remote add origin https://github.com/hyz400021/doc.git
+          git init
+          git add -A
+          git commit -a -m "自动化部署"
+          #git push -f $githubUrl master:gh-pages # 推送到github
+          git push -f https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git master:gh-pages
 
-
+          #mkdir AAA
+          #   cp -r docs/.vuepress/dist/* ./AAA
+          #   cd AAA
+          #   git init
+          #   git add -A
+          #   git config user.name "${{ github.actor }}"
+          #   git config user.email "${{ github.actor }}@users.noreply.github.com"
+          #   git remote add origin https://github.com/hyz400021/doc.git
           #git config --global init.defaultBranch gh-pages
           #git commit -m "Actions自动部署" || echo "No changes to commit"
           # 拉取origin并检测分支
@@ -81,14 +88,14 @@ jobs:
           #git checkout -b gh-pages origin/gh-pages
           # 如果远程没有这个分支
           
-          git checkout --orphan gh-pages
-          git remote set-url origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
-          git reset --hard
-          git commit --allow-empty -m "Initial gh-pages commit"
-          git push origin gh-pages
+          #git checkout --orphan gh-pages
+          #git remote set-url origin https://${{ secrets.HYZ }}@github.com/hyz400021/doc.git
+          #git reset --hard
+          #git commit --allow-empty -m "Initial gh-pages commit"
+          #git push origin gh-pages
           
-          cd ..
-          rm -rf AAA
-          rm -rf docs/.vuepress/dist
+          #cd ..
+          #rm -rf AAA
+          #rm -rf docs/.vuepress/dist
 
         #   git push origin gh-pages
