@@ -40,6 +40,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
           { text: "生态产品价值实现", link: '/pages/55724e/' },
           { text: "个人日记", link: '/pages/2966bf/' },
           { text: "github相关", link: '/pages/48e1ca/' },
+          { text: "浏览器插件", link: '/pages/addc2c/' },
         ]
       }
       // { text: '文档', link: '/pages/f49640/' },

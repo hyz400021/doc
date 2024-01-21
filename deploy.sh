@@ -14,21 +14,18 @@ push_branch=gh-pages
 
 if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
-#   githubUrl=https://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@github.com/hyz400021/doc.git
-#   githubUrl=git@github.com:hyz400021/doc.git
 else
   msg='来自github action的自动部署'
-#   githubUrl=https://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@github.com/hyz400021/doc.git
 fi
 
 # git push -f https://${GITHUB_TOKEN}@github.com/hyz400021/doc.git HEAD:$push_branch
 
-git remote set-url origin https://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@github.com/hyz400021/doc.git
+git remote set-url origin https://$GITHUB_TOKEN@github.com/hyz400021/doc.git
 
 git init
 git add -A
 git commit -m "${msg}"
-git push -f https://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@github.com/hyz400021/doc.git HEAD:gh-pages
+git push -f https://$GITHUB_TOKEN@github.com/hyz400021/doc.git HEAD:gh-pages
 # git push -f $githubUrl origin:gh-pages # 推送到github
 
 cd -
