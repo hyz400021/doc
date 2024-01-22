@@ -6,7 +6,7 @@
 set -e
 
 # 从环境变量中获取 Personal Access Token,这里直接写了,放到环境变量中比较安全
-TOKEN="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" 
+
 
 # push_addr=`git remote get-url --push origin` # git提交地址，也可以手动设置，比如：push_addr=git@github.com:xugaoyi/vuepress-theme-vdoing.git
 
@@ -34,7 +34,7 @@ git commit -m "deploy, $commit_info"
 
 # 使用 Personal Access Token 进行推送
 # 注意：在 URL 中使用 $TOKEN 可以将环境变量的值插入
-git push -f https://$TOKEN@github.com/hyz400021/doc.git HEAD:$push_branch
+git push -f https://$GITHUB_TOKEN@github.com/hyz400021/doc.git HEAD:$push_branch
 
 cd ..
 rm -rf $dist_path
