@@ -41,6 +41,8 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
           { text: "个人日记", link: '/pages/2966bf/' },
           { text: "github相关", link: '/pages/48e1ca/' },
           { text: "浏览器插件", link: '/pages/addc2c/' },
+          { text: "next", link: '/pages/968b33/' },
+          { text: "常用软件", link: '/pages/374ef9/' },
         ]
       }
       // { text: '文档', link: '/pages/f49640/' },
